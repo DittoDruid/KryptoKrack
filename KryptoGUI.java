@@ -64,8 +64,7 @@ public class KryptoGUI extends JFrame implements ActionListener
         backgroundPanel.setLayout(new BorderLayout());
         backgroundPanel.setBackground(Color.yellow);
         //fix zebraLabel*******************************************
-        zebraIcon = new ImageIcon("C:/Users/Karin/Documents/NetBeansProjects"
-                + "/Krypto/images/bluewavy.png");        
+        zebraIcon = new ImageIcon("bluewavy.png");        
         zebraLabel = new JLabel(zebraIcon);
         backgroundPanel.add(zebraLabel);
         contentPane.add("Center", backgroundPanel);
@@ -83,8 +82,7 @@ public class KryptoGUI extends JFrame implements ActionListener
         namePanel.setLayout(new FlowLayout());
         namePanel.setBackground(Color. blue);
         kryptoKrack = new JLabel(kryptoIcon);
-        kryptoKrack = new JLabel(new ImageIcon("C:/Users/Karin/Documents/"
-                + "NetBeansProjects/Krypto/images/krackingKryptoblue.jpg"));
+        kryptoKrack = new JLabel(new ImageIcon("krackingKryptoblue.jpg"));
         namePanel.add(kryptoKrack);
         titlePanel.add("West", namePanel);
                 
@@ -254,8 +252,7 @@ public class KryptoGUI extends JFrame implements ActionListener
         //gamePanel.add(Box.createRigidArea(new Dimension(150,150)));
         
         sumoLabel = new JLabel(sumoIcon);
-        sumoLabel = new JLabel(new ImageIcon("C:/Users/Karin/Documents/"
-                + "NetBeansProjects/Krypto/images/mchammer.gif"));
+        sumoLabel = new JLabel(new ImageIcon("mchammer.gif"));
         gamePanel.add("South", sumoLabel);
         
         backgroundPanel.add("South", gamePanel);   
@@ -429,7 +426,7 @@ public class KryptoGUI extends JFrame implements ActionListener
     {
         //not working yet
         super.paintComponents(g);
-        Image bkgrnd = Toolkit.getDefaultToolkit().getImage("images/bluewavy.png");
+        Image bkgrnd = Toolkit.getDefaultToolkit().getImage("bluewavy.png");
         g.drawImage(bkgrnd, 0, 0, this);
         requestFocusInWindow();      
     }
