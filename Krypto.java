@@ -14,6 +14,15 @@ public class Krypto {
     private String c1, c2, c3, c4, c5, eA;
     public boolean valid;
     
+    public void Krypto()
+    {
+        valid=false;
+        while(valid==false)
+        {
+        generateNumber();
+        verify();
+        }
+    }
     public void generateNumber()
     {
         Random rand = new Random();
@@ -84,6 +93,7 @@ public class Krypto {
         c1 = String.valueOf(cardOne);
        // c1 = "testing getCardOne";
         System.out.println("cardOne: " +c1);
+        
         return c1;
     }
     

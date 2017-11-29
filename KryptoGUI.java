@@ -64,7 +64,8 @@ public class KryptoGUI extends JFrame implements ActionListener
         backgroundPanel.setLayout(new BorderLayout());
         backgroundPanel.setBackground(Color.yellow);
         //fix zebraLabel*******************************************
-        zebraIcon = new ImageIcon("bluewavy.png");        
+        zebraIcon = new ImageIcon("C:/Users/Karin/Documents/NetBeansProjects"
+                + "/Krypto/images/bluewavy.png");        
         zebraLabel = new JLabel(zebraIcon);
         backgroundPanel.add(zebraLabel);
         contentPane.add("Center", backgroundPanel);
@@ -82,7 +83,8 @@ public class KryptoGUI extends JFrame implements ActionListener
         namePanel.setLayout(new FlowLayout());
         namePanel.setBackground(Color. blue);
         kryptoKrack = new JLabel(kryptoIcon);
-        kryptoKrack = new JLabel(new ImageIcon("krackingKryptoblue.jpg"));
+        kryptoKrack = new JLabel(new ImageIcon("C:/Users/Karin/Documents/"
+                + "NetBeansProjects/Krypto/images/krackingKryptoblue.jpg"));
         namePanel.add(kryptoKrack);
         titlePanel.add("West", namePanel);
                 
@@ -219,7 +221,7 @@ public class KryptoGUI extends JFrame implements ActionListener
         equals.setFont(new Font("Comic Sans MS", Font.BOLD, 15));        
         equals.setBackground(Color.blue);
         equals.setForeground(Color.yellow);
-        total = new JTextField("43");
+        total = new JTextField("0");
         total.setEditable(false);
         total.setFont(new Font("Comic Sans MS", Font.BOLD, 15));        
         total.setBackground(Color.orange);
@@ -252,7 +254,8 @@ public class KryptoGUI extends JFrame implements ActionListener
         //gamePanel.add(Box.createRigidArea(new Dimension(150,150)));
         
         sumoLabel = new JLabel(sumoIcon);
-        sumoLabel = new JLabel(new ImageIcon("mchammer.gif"));
+        sumoLabel = new JLabel(new ImageIcon("C:/Users/Karin/Documents/"
+                + "NetBeansProjects/Krypto/images/mchammer.gif"));
         gamePanel.add("South", sumoLabel);
         
         backgroundPanel.add("South", gamePanel);   
@@ -267,6 +270,12 @@ public class KryptoGUI extends JFrame implements ActionListener
     
     public void doDeal()
     {
+        Krypto game = new Krypto();
+        game.Krypto();
+        cardOne.setText(game.getCardOne());
+        cardTwo.setText(game.getCardTwo());
+        cardThree.setText(game.getCardThree());
+        total.setText(game.getEquationAnswer());//not setting it correctly
         System.out.println("This is where deal button function goes.");
     }
         
@@ -418,7 +427,7 @@ public class KryptoGUI extends JFrame implements ActionListener
     {
         //not working yet
         //game.getCardOne();
-        c1 = game.getCardOne();
+        //c1 = game.getCardOne();
         
     }
     
@@ -426,7 +435,7 @@ public class KryptoGUI extends JFrame implements ActionListener
     {
         //not working yet
         super.paintComponents(g);
-        Image bkgrnd = Toolkit.getDefaultToolkit().getImage("bluewavy.png");
+        Image bkgrnd = Toolkit.getDefaultToolkit().getImage("images/bluewavy.png");
         g.drawImage(bkgrnd, 0, 0, this);
         requestFocusInWindow();      
     }

@@ -3,7 +3,7 @@ public class KryptoApplication
     public static void main(String[] args)
     {
         Krypto crypto = new Krypto();
-        crypto.test();
+        //crypto.test();
         
         KryptoGUI gui = new KryptoGUI("CryptoDraft-GUI");
     }
