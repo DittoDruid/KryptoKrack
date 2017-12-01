@@ -35,6 +35,7 @@ public class KryptoGUI extends JFrame implements ActionListener
     private String operators[] = {"+", "-", "*", "/"};
     private final static int OPERATORS = 4;
     private String c1, c2, c3, c4, c5, s1, s2, s3, s4, s5;
+    private int order =0;
    
    
    public KryptoGUI (String title)
@@ -56,6 +57,7 @@ public class KryptoGUI extends JFrame implements ActionListener
         buildCardPanel();
         buildGamePanel();
         testGetters();
+        doDeal();
    }  
    
     private void buildBackgroundPanel()
@@ -276,7 +278,20 @@ public class KryptoGUI extends JFrame implements ActionListener
         cardTwo.setText(game.getCardTwo());
         cardThree.setText(game.getCardThree());
         total.setText(game.getEquationAnswer());//not setting it correctly
+        targetAmt.setText(game.getEquationAnswer());
         System.out.println("This is where deal button function goes.");
+        resetGUI();
+        
+    }
+    public void resetGUI()
+    {
+        selectOne.setText("0");
+        selectTwo.setText("0");
+        selectThree.setText("0");
+        order=0;
+        cardOne.setEnabled(true);
+        cardTwo.setEnabled(true);
+        cardThree.setEnabled(true);
     }
         
     public void doSolve()
@@ -286,20 +301,36 @@ public class KryptoGUI extends JFrame implements ActionListener
     
     //*****************************************************
 
-    public void doCardOne()
+    public void doCard(ActionEvent e)
     {
-        System.out.println("cardOne functionality");
-    }
+        String label;
+        System.out.println("card functionality");
+        label=((JButton)e.getSource()).getText();
+        System.out.println(label);
+        if(order==0)
+        {
+            selectOne.setText(label);
+            ((JButton)e.getSource()).setEnabled(false);
+            
+        }
+        else if(order==1)
+        {
+            selectTwo.setText(label);
+            ((JButton)e.getSource()).setEnabled(false);
+        }
+        else if(order>=2)
+        {
+            selectThree.setText(label);
+            ((JButton)e.getSource()).setEnabled(false);
+        }
+        order++;
+        updateTotal();
         
-    public void doCardTwo()
-    {
-        System.out.println("cardTwo functionality");
     }
-    
-    public void doCardThree()
+    public void updateTotal() //need a way to read combo boxes and use the symbol as an equation not just a string. gonna have to do 16 if statements   
     {
-        System.out.println("cardThree functionality");
-    }    
+        
+    }
     
     //***************************************************** gamePanel Cards
     
@@ -355,6 +386,7 @@ public class KryptoGUI extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         //local variables declared here
+        
    
         if (e.getSource() == hintButton)
         {
@@ -370,15 +402,15 @@ public class KryptoGUI extends JFrame implements ActionListener
         }  
         else if (e.getSource() == cardOne)
         {
-            doCardOne();
+            doCard(e);
         }
         else if (e.getSource() == cardTwo)
         {
-           doCardTwo();
+           doCard(e);
         }      
         else if (e.getSource() == cardThree)
         {
-           doCardThree();
+           doCard(e);
         }   
         else if (e.getSource() == selectOne)
         {

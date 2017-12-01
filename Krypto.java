@@ -26,45 +26,97 @@ public class Krypto {
     public void generateNumber()
     {
         Random rand = new Random();
-        cardOne = rand.nextInt(100);
-        cardTwo = rand.nextInt(100);
-        cardThree = rand.nextInt(100);
+        cardOne = rand.nextInt(100)+1;
+        cardTwo = rand.nextInt(100)+1;
+        cardThree = rand.nextInt(100)+1;
         //cardFour = rand.nextInt(100);
         //cardFive = rand.nextInt(100);
-        equationAnswer = rand.nextInt(100);      
+        equationAnswer = rand.nextInt(100)+1;      
     }
     public void verify()
     {
-        if(cardOne+cardTwo==equationAnswer)
+        if(cardOne+cardTwo+cardThree==equationAnswer)
         {
             valid=true;
             System.out.println(cardOne+"+"+cardTwo+"="+equationAnswer);
         }
-        else if(cardOne+cardThree==equationAnswer)
+        else if(cardOne+cardTwo-cardThree==equationAnswer)
         {
             valid=true;   
             System.out.println(cardOne+"+"+cardThree+"="+equationAnswer);
         }
-        else if(cardTwo+cardThree==equationAnswer)
+        else if(cardOne-cardTwo+cardThree==equationAnswer)
         {
             valid=true;
             System.out.println(cardTwo+"+"+cardThree+"="+equationAnswer);
         }
-        else if(cardOne-cardTwo==equationAnswer)
+        else if(cardOne-cardTwo-cardThree==equationAnswer)
         {
             valid=true;
             System.out.println(cardOne+"-"+cardTwo+"="+equationAnswer);
         }
-        else if(cardOne-cardThree==equationAnswer)
+        else if(cardOne+cardTwo*cardThree==equationAnswer)
         {
             valid=true;   
             System.out.println(cardOne+"-"+cardThree+"="+equationAnswer);
         }
-        else if(cardTwo-cardThree==equationAnswer)
+        else if(cardOne*cardTwo+cardThree==equationAnswer)
         {
             valid=true;
             System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
         }
+        else if(cardOne*cardTwo*cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne-cardTwo*cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne*cardTwo-cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne/cardTwo/cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne/cardTwo+cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne+cardTwo/cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne-cardTwo/cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne/cardTwo-cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne*cardTwo/cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        else if(cardOne/cardTwo*cardThree==equationAnswer)
+        {
+            valid=true;
+            System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+        }
+        
+        
         else
         {
             
