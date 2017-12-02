@@ -1,5 +1,5 @@
  /**
- * Author: Karin Martin
+ * Authors: Karin Martin, Zack Schiding, Patrick Leeper
   Name: Krypto.java
   Version: 0.4
   Function: Builds GUI Components for Kracking Krypto game. Performs ActionListener
@@ -37,7 +37,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    private JLabel zebraLabel, sumoLabel,kryptoKrack;
    private JTextField target, targetAmt, equals, total;
    private ImageIcon zebraIcon, sumoIcon, kryptoIcon;
-   private JButton dealButton, hintButton, solveButton;
+   private JButton instructionButton, dealButton, hintButton, solveButton;
    private JButton cardOne, cardTwo, cardThree, cardFour, cardFive;
    private JButton selectOne, selectTwo, selectThree, selectFour, selectFive;
    private JComboBox operatorJCB1, operatorJCB2, operatorJCB3, operatorJCB4;
@@ -98,11 +98,16 @@ public class KryptoGUI extends JFrame implements ActionListener
              + "NetBeansProjects/Krypto/images/krackingKryptoblue.jpg"));
       namePanel.add(kryptoKrack);
       titlePanel.add("West", namePanel);
+           
               
       hintPanel = new JPanel();
       hintPanel.setLayout(new FlowLayout());
       hintPanel.setBackground(Color.blue);
       titlePanel.add("East", hintPanel);
+      instructionButton = new JButton("instructions");
+      instructionButton.setBackground(Color.black);
+      instructionButton.setForeground(Color.yellow);
+      instructionButton.addActionListener(this);
       dealButton = new JButton("deal");
       dealButton.setBackground(Color.black);
       dealButton.setForeground(Color.yellow);
@@ -118,6 +123,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       solveButton.setForeground(Color.yellow);
       solveButton.addActionListener(this);
       solveButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+      hintPanel.add(instructionButton);
       hintPanel.add(hintButton);
       hintPanel.add(dealButton);
       hintPanel.add(solveButton);  
@@ -334,7 +340,6 @@ public class KryptoGUI extends JFrame implements ActionListener
       order++;
       updateTotal();
       
-      
    }
    public void updateTotal() //need a way to read combo boxes and use the symbol as an equation not just a string. gonna have to do 16 if statements   
    {
@@ -395,7 +400,12 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void actionPerformed(ActionEvent e)
    {
       //local variables declared here
-      
+      if (e.getSource() == instructionButton)
+      {
+         //JOptionPane.showInputDialog(null, "Pick the number cards onto the game board in order as they appear. ", "OK");
+                  //JOptionPane.showInputDialog(null, "You won!!!", "OK");//work in progress
+         instructions();
+      }
    
       if (e.getSource() == hintButton)
       {
@@ -455,7 +465,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       }     
       else if (e.getSource() == operatorJCB4)
       {
-         doSelectOperator4(); 
+         doSelectOperator4();
       }   
       else
       {
@@ -481,9 +491,15 @@ public class KryptoGUI extends JFrame implements ActionListener
       requestFocusInWindow();      
    }
    
-   public void winIt()
+   public void wonIt()
    {
-      JOptionPane.showInputDialog(null, "You won!!!", "OK");//work in progress
+      JOptionPane.showMessageDialog(null, "You won!!!");
    }
+   
+   public void instructions()
+   {
+      JOptionPane.showMessageDialog(null, "Instructions go here. ");
+   }   
+   
 }//end KryptoGUI
 

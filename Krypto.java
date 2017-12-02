@@ -1,13 +1,14 @@
+ /**
+ * Authors: Zack Schiding, Karin Martin, Patrick Leeper
+ * Name: Krypto.java
+  Version: 0.4
+  Function: Generates three numbers that match up with a 
+   generated answer number either by subtraction or addition.
+ */
+
 import java.util.*;
 
-/**
- * Author: Zack Schiding
- * Author Getters: Karin Martin
-  Name: Krypto.java
-  Version: 0.4
-  Function: Generates three numbers that match up with a generated answer number either by subtraction or addition.
- * 
- */
+
 public class Krypto {
 
    private int cardOne,cardTwo,cardThree, cardFour, cardFive,equationAnswer;
