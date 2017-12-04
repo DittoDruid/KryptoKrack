@@ -39,82 +39,84 @@ public class Krypto {
       if(cardOne+cardTwo+cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardOne+"+"+cardTwo+"="+equationAnswer);
+         System.out.println(cardOne+"+"+cardTwo+"+"+cardThree+"="+equationAnswer);
       }
       else if(cardOne+cardTwo-cardThree==equationAnswer)
       {
          valid=true;   
-         System.out.println(cardOne+"+"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"+"+cardTwo+"-"+cardThree+"="+equationAnswer);
       }
       else if(cardOne-cardTwo+cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"+"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"-"+cardTwo+"+"+cardThree+"="+equationAnswer);
       }
       else if(cardOne-cardTwo-cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardOne+"-"+cardTwo+"="+equationAnswer);
+         System.out.println(cardOne+"-"+cardTwo+"-"+cardThree+"="+equationAnswer);
       }
       else if(cardOne+cardTwo*cardThree==equationAnswer)
       {
          valid=true;   
-         System.out.println(cardOne+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"+"+cardTwo+"*"+cardThree+"="+equationAnswer);
       }
       else if(cardOne*cardTwo+cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"*"+cardTwo+"+"+cardThree+"="+equationAnswer);
       }
       else if(cardOne*cardTwo*cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"*"+cardTwo+"*"+cardThree+"="+equationAnswer);
       }
+      
       else if(cardOne-cardTwo*cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"-"+cardTwo+"*"+cardThree+"="+equationAnswer);
       }
       else if(cardOne*cardTwo-cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"*"+cardTwo+"-"+cardThree+"="+equationAnswer);
       }
       else if(cardOne/cardTwo/cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"/"+cardTwo+"/"+cardThree+"="+equationAnswer);
       }
       else if(cardOne/cardTwo+cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"/"+cardTwo+"+"+cardThree+"="+equationAnswer);
       }
       else if(cardOne+cardTwo/cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"+"+cardTwo+"/"+cardThree+"="+equationAnswer);
       }
+      
       else if(cardOne-cardTwo/cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"-"+cardTwo+"/"+cardThree+"="+equationAnswer);
       }
       else if(cardOne/cardTwo-cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"/"+cardTwo+"-"+cardThree+"="+equationAnswer);
       }
       else if(cardOne*cardTwo/cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"*"+cardTwo+"/"+cardThree+"="+equationAnswer);
       }
       else if(cardOne/cardTwo*cardThree==equationAnswer)
       {
          valid=true;
-         System.out.println(cardTwo+"-"+cardThree+"="+equationAnswer);
+         System.out.println(cardOne+"/"+cardTwo+"*"+cardThree+"="+equationAnswer);
       }
       
       
