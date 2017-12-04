@@ -25,11 +25,11 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Component.*;
 import javax.swing.JComponent.*;
+import javax.swing.border.Border;
 
 public class KryptoGUI extends JFrame implements ActionListener 
 {
    private Container contentPane;
-   private Krypto game;
    private JPanel backgroundPanel; 
    private JPanel titlePanel, namePanel, hintPanel;
    private JPanel cardPanel, targetPanel;
@@ -42,8 +42,6 @@ public class KryptoGUI extends JFrame implements ActionListener
    private JButton selectOne, selectTwo, selectThree, selectFour, selectFive;
    private JComboBox operatorJCB1, operatorJCB2, operatorJCB3, operatorJCB4;
    private String operators[] = {"+", "-", "*", "/"};
-   private final static int OPERATORS = 4;
-   private String c1, c2, c3, c4, c5, s1, s2, s3, s4, s5;
    private int order =0;
   
   
@@ -65,7 +63,6 @@ public class KryptoGUI extends JFrame implements ActionListener
       buildTitlePanel();
       buildCardPanel();
       buildGamePanel();
-      testGetters();
       doDeal();
    }//end buildGUI
   
@@ -73,7 +70,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    {
       backgroundPanel = new JPanel();
       backgroundPanel.setLayout(new BorderLayout());
-      backgroundPanel.setBackground(Color.yellow);
+      backgroundPanel.setBackground(new Color(0,0,255));
       //fix zebraLabel*******************************************
       zebraIcon = new ImageIcon("C:/Users/Karin/Documents/NetBeansProjects"
              + "/Krypto/images/bluewavy.png");        
@@ -87,40 +84,44 @@ public class KryptoGUI extends JFrame implements ActionListener
       titlePanel = new JPanel();
       titlePanel.setLayout(new BorderLayout());
       //titlePanel.setOpaque(false);
-      titlePanel.setBackground(Color.blue);
+      titlePanel.setBackground(new Color(0,0,255));
       backgroundPanel.add("North", titlePanel);
       
       namePanel = new JPanel();
       namePanel.setLayout(new FlowLayout());
-      namePanel.setBackground(Color. blue);
+      namePanel.setBackground(new Color(0,0,255));
       kryptoKrack = new JLabel(kryptoIcon);
-      kryptoKrack = new JLabel(new ImageIcon("C:/Users/Karin/Documents/"
-             + "NetBeansProjects/Krypto/images/krackingKryptoblue.jpg"));
+      kryptoKrack = new JLabel(new ImageIcon("images/krackingkrypto255.png"));
       namePanel.add(kryptoKrack);
       titlePanel.add("West", namePanel);
            
               
       hintPanel = new JPanel();
       hintPanel.setLayout(new FlowLayout());
-      hintPanel.setBackground(Color.blue);
+      hintPanel.setBackground(new Color(0,0,255));
       titlePanel.add("East", hintPanel);
       instructionButton = new JButton("instructions");
       instructionButton.setBackground(Color.black);
       instructionButton.setForeground(Color.yellow);
+      instructionButton.setFocusPainted(false);
       instructionButton.addActionListener(this);
+      instructionButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
       dealButton = new JButton("deal");
       dealButton.setBackground(Color.black);
       dealButton.setForeground(Color.yellow);
+      dealButton.setFocusPainted(false);
       dealButton.addActionListener(this);
       dealButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
       hintButton = new JButton("hint");
       hintButton.setBackground(Color.black);
       hintButton.setForeground(Color.yellow);
+      hintButton.setFocusPainted(false);
       hintButton.addActionListener(this);
       hintButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
       solveButton = new JButton("solve");
       solveButton.setBackground(Color.black);
       solveButton.setForeground(Color.yellow);
+      solveButton.setFocusPainted(false);
       solveButton.addActionListener(this);
       solveButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
       hintPanel.add(instructionButton);
@@ -133,8 +134,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    {
       cardPanel = new JPanel();
       cardPanel.setLayout(new FlowLayout());
-      cardPanel.setBackground(Color.blue);
-      //cardPanel.setOpaque(false);
+      cardPanel.setBackground(new Color(0,0,255));
       backgroundPanel.add("Center", cardPanel);
       
       Box.createRigidArea(new Dimension(0,100));
@@ -143,16 +143,19 @@ public class KryptoGUI extends JFrame implements ActionListener
       cardOne = new JButton("cardOne");
       cardOne.setBackground(Color.black);
       cardOne.setForeground(Color.yellow);
+      cardOne.setFocusPainted(false);
       cardOne.addActionListener(this);
       cardOne.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
       cardTwo = new JButton("cardTwo");
       cardTwo.setBackground(Color.black);
       cardTwo.setForeground(Color.yellow);
+      cardTwo.setFocusPainted(false);
       cardTwo.addActionListener(this);
       cardTwo.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
       cardThree = new JButton("cardThree");
       cardThree.setBackground(Color.black);
       cardThree.setForeground(Color.yellow);
+      cardThree.setFocusPainted(false);
       cardThree.addActionListener(this);
       cardThree.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
       //cardFour = new JButton("4");
@@ -172,7 +175,8 @@ public class KryptoGUI extends JFrame implements ActionListener
       
       targetPanel = new JPanel();
       targetPanel.setLayout(new BorderLayout());
-      targetPanel.setBackground(Color.blue);
+      targetPanel.setBackground(new Color(0,0,255));
+      targetPanel.setBorder(BorderFactory.createTitledBorder(""));
       target = new JTextField("Target");
       target.setBorder(javax.swing.BorderFactory.createEmptyBorder());
       target.setEditable(false);
@@ -180,14 +184,13 @@ public class KryptoGUI extends JFrame implements ActionListener
       target.setForeground(Color.white);
       target.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
       targetAmt = new JTextField("43");
-      targetAmt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+      //targetAmt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
       targetAmt.setEditable(false);
       targetAmt.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
       targetAmt.setBackground(Color.orange);
       targetPanel.add("North", target);
       
-      Box.createRigidArea(new Dimension(50,50));
-      targetPanel.add(Box.createRigidArea(new Dimension(50,50)));
+       cardPanel.add(Box.createRigidArea(new Dimension(25,25)));
       
       targetPanel.add("Center", targetAmt);
       cardPanel.add(targetPanel);   
@@ -206,16 +209,19 @@ public class KryptoGUI extends JFrame implements ActionListener
       selectOne = new JButton("One");
       selectOne.setBackground(Color.black);
       selectOne.setForeground(Color.yellow);
+      selectOne.setFocusPainted(false);
       selectOne.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
       selectOne.addActionListener(this);
       selectTwo = new JButton("Two");
       selectTwo.setBackground(Color.black);
       selectTwo.setForeground(Color.yellow);
+      selectTwo.setFocusPainted(false);
       selectTwo.setFont(new Font("Comic Sans MS", Font.BOLD, 15));        
       selectTwo.addActionListener(this);
       selectThree = new JButton("Three");
       selectThree.setBackground(Color.black);
       selectThree.setForeground(Color.yellow);
+      selectThree.setFocusPainted(false);
       selectThree.setFont(new Font("Comic Sans MS", Font.BOLD, 15));       
       selectThree.addActionListener(this);
       selectFour = new JButton("Four");
@@ -235,22 +241,37 @@ public class KryptoGUI extends JFrame implements ActionListener
       equals.setBackground(Color.black);
       equals.setForeground(Color.yellow);
       equals.setFont(new Font("Comic Sans MS", Font.BOLD, 15));        
-      equals.setBackground(Color.blue);
+      equals.setBackground(new Color(0,0,255));
       equals.setForeground(Color.yellow);
       total = new JTextField("0");
       total.setEditable(false);
       total.setFont(new Font("Comic Sans MS", Font.BOLD, 15));        
       total.setBackground(Color.orange);
       
+      //Border border = BorderFactory.createLineBorder(Color.red, 15);
+      //UIManager.put("ComboBox.border", border);
+          
       operatorJCB1 = new JComboBox(operators);
-      //operatorJCB1.setBackground(Color.black);
+      operatorJCB1.setBackground(Color.blue);
+      operatorJCB1.setForeground(Color.yellow);
+      //operatorJCB1.setBorder(border);
+      operatorJCB1.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
       operatorJCB1.addActionListener(this);
       operatorJCB2 = new JComboBox(operators);
+      operatorJCB2.setBackground(Color.blue);
+      operatorJCB2.setForeground(Color.yellow);
+      operatorJCB2.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
       operatorJCB2.addActionListener(this);
+
+      /*
       operatorJCB3 = new JComboBox(operators);
+      operatorJCB3.setBackground(Color.blue);
+      operatorJCB3.setForeground(Color.yellow);
+      operatorJCB3.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
       operatorJCB3.addActionListener(this);
       operatorJCB4 = new JComboBox(operators);
       operatorJCB4.addActionListener(this);
+      */
       
       gamePanelCtr.add(selectOne);
       gamePanelCtr.add(operatorJCB1);
@@ -270,8 +291,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       //gamePanel.add(Box.createRigidArea(new Dimension(150,150)));
       
       sumoLabel = new JLabel(sumoIcon);
-      sumoLabel = new JLabel(new ImageIcon("C:/Users/Karin/Documents/"
-             + "NetBeansProjects/Krypto/images/mchammer.gif"));
+      sumoLabel = new JLabel(new ImageIcon("images/mchammer.gif"));
       gamePanel.add("South", sumoLabel);
       
       backgroundPanel.add("South", gamePanel);   
@@ -402,8 +422,6 @@ public class KryptoGUI extends JFrame implements ActionListener
       //local variables declared here
       if (e.getSource() == instructionButton)
       {
-         //JOptionPane.showInputDialog(null, "Pick the number cards onto the game board in order as they appear. ", "OK");
-                  //JOptionPane.showInputDialog(null, "You won!!!", "OK");//work in progress
          instructions();
       }
    
@@ -473,14 +491,6 @@ public class KryptoGUI extends JFrame implements ActionListener
       }
       
    }//end ActionPerformed
-   
-   public void testGetters()
-   {
-      //not working yet
-      //game.getCardOne();
-      //c1 = game.getCardOne();
-      
-   }
    
    public void paintComponent(Graphics g)
    {
