@@ -42,11 +42,13 @@ public class KryptoGUI extends JFrame implements ActionListener
    private JButton selectOne, selectTwo, selectThree, selectFour, selectFive;
    private JComboBox operatorJCB1, operatorJCB2, operatorJCB3, operatorJCB4;
    private String operators[] = {"+", "-", "*", "/"};
-   private int order =0;
+   private boolean order[] = {false,false,false};
+   private String userEquation[]={"null","null","null","null","null"};
   
   
    public KryptoGUI (String title)
    {
+     
       buildGUI();
       setTitle(title);
       setSize(600,400);	
@@ -72,8 +74,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       backgroundPanel.setLayout(new BorderLayout());
       backgroundPanel.setBackground(new Color(0,0,255));
       //fix zebraLabel*******************************************
-      zebraIcon = new ImageIcon("C:/Users/Karin/Documents/NetBeansProjects"
-             + "/Krypto/images/bluewavy.png");        
+      zebraIcon = new ImageIcon("bluewavy.png");        
       zebraLabel = new JLabel(zebraIcon);
       backgroundPanel.add(zebraLabel);
       contentPane.add("Center", backgroundPanel);
@@ -91,7 +92,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       namePanel.setLayout(new FlowLayout());
       namePanel.setBackground(new Color(0,0,255));
       kryptoKrack = new JLabel(kryptoIcon);
-      kryptoKrack = new JLabel(new ImageIcon("images/krackingkrypto255.png"));
+      kryptoKrack = new JLabel(new ImageIcon("krackingkrypto255.png"));
       namePanel.add(kryptoKrack);
       titlePanel.add("West", namePanel);
            
@@ -291,7 +292,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       //gamePanel.add(Box.createRigidArea(new Dimension(150,150)));
       
       sumoLabel = new JLabel(sumoIcon);
-      sumoLabel = new JLabel(new ImageIcon("images/mchammer.gif"));
+      sumoLabel = new JLabel(new ImageIcon("mchammer.gif"));
       gamePanel.add("South", sumoLabel);
       
       backgroundPanel.add("South", gamePanel);   
@@ -302,6 +303,11 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void doHint()
    {
       System.out.println("This is where hint button function goes.");
+      //game.equation;
+      for(int i=0;i<game.equation.length;i++)
+      {
+          
+      }
       
    }
    
@@ -312,7 +318,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       cardOne.setText(game.getCardOne());
       cardTwo.setText(game.getCardTwo());
       cardThree.setText(game.getCardThree());
-      total.setText(game.getEquationAnswer());//not setting it correctly
+      total.setText("0");
       targetAmt.setText(game.getEquationAnswer());
       System.out.println("This is where deal button function goes.");
       resetGUI();
@@ -320,10 +326,12 @@ public class KryptoGUI extends JFrame implements ActionListener
    }
    public void resetGUI()
    {
-      selectOne.setText("0");
-      selectTwo.setText("0");
-      selectThree.setText("0");
-      order=0;
+      selectOne.setText("-1");
+      selectTwo.setText("-1");
+      selectThree.setText("-1");
+      order[0]=false;
+      order[1]=false;
+      order[2]=false;
       cardOne.setEnabled(true);
       cardTwo.setEnabled(true);
       cardThree.setEnabled(true);
@@ -343,58 +351,127 @@ public class KryptoGUI extends JFrame implements ActionListener
       System.out.println("card functionality");
       label=((JButton)e.getSource()).getText();
       System.out.println(label);
-      if(order==0)
+      if(order[0]==false)
       {
          selectOne.setText(label);
          ((JButton)e.getSource()).setEnabled(false);
+         order[0]=true;
          
       }
-      else if(order==1)
+      else if(order[1]==false)
       {
          selectTwo.setText(label);
          ((JButton)e.getSource()).setEnabled(false);
+         order[1]=true;
       }
-      else if(order>=2)
+      else if(order[2]==false)
       {
          selectThree.setText(label);
          ((JButton)e.getSource()).setEnabled(false);
+         order[2]=true;
       }
-      order++;
+      
       updateTotal();
       
    }
-   public void updateTotal() //need a way to read combo boxes and use the symbol as an equation not just a string. gonna have to do 16 if statements   
-   {
    
+   
+   public void updateTotal() //Need to add error handling if they try to divide by zero
+   {
+    String answer="";
+    int aurene,firstNum,secondNum,thirdNum;
+    aurene=0;
+    firstNum=Integer.parseInt(selectOne.getText());
+    secondNum=Integer.parseInt(selectTwo.getText());
+    thirdNum=Integer.parseInt(selectThree.getText());
+    answer=selectOne.getText()+operatorJCB1.getSelectedItem()+selectTwo.getText()+operatorJCB2.getSelectedItem()+selectThree.getText();
+    System.out.println(answer);
+    if(operatorJCB1.getSelectedItem()=="+")
+    {
+       if(operatorJCB2.getSelectedItem()=="+")
+       {
+           aurene=firstNum+secondNum+thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="-")
+       {
+           aurene=firstNum+secondNum-thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="*")
+       {
+           aurene=firstNum+secondNum*thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="/")
+       {
+           aurene=firstNum+secondNum/thirdNum;
+       }
+    }
+    else if(operatorJCB1.getSelectedItem()=="-")
+    {
+       if(operatorJCB2.getSelectedItem()=="+")
+       {
+           aurene=firstNum-secondNum+thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="-")
+       {
+           aurene=firstNum-secondNum-thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="*")
+       {
+           aurene=firstNum-secondNum*thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="/")
+       {
+           aurene=firstNum-secondNum/thirdNum;
+       }
+    }
+    else if(operatorJCB1.getSelectedItem()=="*")
+    {
+       if(operatorJCB2.getSelectedItem()=="+")
+       {
+           aurene=firstNum*secondNum+thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="-")
+       {
+           aurene=firstNum*secondNum-thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="*")
+       {
+           aurene=firstNum*secondNum*thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="/")
+       {
+           aurene=firstNum*secondNum/thirdNum;
+       }
+    }
+    else if(operatorJCB1.getSelectedItem()=="/")
+    {
+       if(operatorJCB2.getSelectedItem()=="+")
+       {
+           aurene=firstNum/secondNum+thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="-")
+       {
+           aurene=firstNum/secondNum-thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="*")
+       {
+           aurene=firstNum/secondNum*thirdNum;
+       }
+       else if(operatorJCB2.getSelectedItem()=="/")
+       {
+           aurene=firstNum/secondNum/thirdNum;
+       }
+    }
+    total.setText(String.valueOf(aurene));
+    
+    
+    
    }
+   
    
    //***************************************************** gamePanel Cards
    
-   public void doSelectOne()
-   {
-      System.out.println("selectOne functionality");
-   }
-      
-   public void doSelectTwo()
-   {
-      System.out.println("selectTwo functionality");
-   }
-
-   public void doSelectThree()
-   {
-      System.out.println("selectThree functionality");
-   }
-
-   public void doSelectFour()
-   {
-      System.out.println("selectFour functionality");
-   }
-
-   public void doSelectFive()
-   {
-      System.out.println("selectFive functionality");
-   }
-
+ 
    //***********************************************operator JComboBoxes
    
    public void doSelectOperator1()
@@ -453,31 +530,79 @@ public class KryptoGUI extends JFrame implements ActionListener
       }   
       else if (e.getSource() == selectOne)
       {
-         doSelectOne(); 
+          
+         if(selectOne.getText()==cardOne.getText())
+         {
+             cardOne.setEnabled(true);
+         }
+         else if(selectOne.getText()==cardTwo.getText())
+         {
+             cardTwo.setEnabled(true);
+         }
+         else if(selectOne.getText()==cardThree.getText())
+         {
+             cardThree.setEnabled(true);
+         }
+         selectOne.setText("-1");
+         order[0]=false;
+         updateTotal();
+         
       }
       else if (e.getSource() == selectTwo)
       {
-         doSelectTwo(); 
+         
+         if(selectTwo.getText()==cardOne.getText())
+         {
+             cardOne.setEnabled(true);
+         }
+         else if(selectTwo.getText()==cardTwo.getText())
+         {
+             cardTwo.setEnabled(true);
+         }
+         else if(selectTwo.getText()==cardThree.getText())
+         {
+             cardThree.setEnabled(true);
+         }
+         selectTwo.setText("-1");
+         order[1]=false;
+         updateTotal();
       }
       else if (e.getSource() == selectThree)
       {
-         doSelectThree(); 
+         
+         if(selectThree.getText()==cardOne.getText())
+         {
+             cardOne.setEnabled(true);
+         }
+         else if(selectThree.getText()==cardTwo.getText())
+         {
+             cardTwo.setEnabled(true);
+         }
+         else if(selectThree.getText()==cardThree.getText())
+         {
+             cardThree.setEnabled(true);
+         }
+         selectThree.setText("-1");
+         order[2]=false;
+         updateTotal();
       }
       else if (e.getSource() == selectFour)
       {
-         doSelectFour(); 
+          
       }
       else if (e.getSource() == selectFive)
       {
-         doSelectFive(); 
+          
       }        
       else if (e.getSource() == operatorJCB1)
       {
-         doSelectOperator1(); 
+         doSelectOperator1();
+         updateTotal();
       }     
       else if (e.getSource() == operatorJCB2)
       {
-         doSelectOperator2(); 
+         doSelectOperator2();
+         updateTotal();
       }     
       else if (e.getSource() == operatorJCB3)
       {
@@ -498,7 +623,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    {
       //not working yet
       super.paintComponents(g);
-      Image bkgrnd = Toolkit.getDefaultToolkit().getImage("images/bluewavy.png");
+      Image bkgrnd = Toolkit.getDefaultToolkit().getImage("bluewavy.png");
       g.drawImage(bkgrnd, 0, 0, this);
       requestFocusInWindow();      
    }
