@@ -27,12 +27,12 @@ public class Krypto {
    public void generateNumber()
    {
       Random rand = new Random();
-      cardOne = rand.nextInt(100)+1;
-      cardTwo = rand.nextInt(100)+1;
-      cardThree = rand.nextInt(100)+1;
+      cardOne = rand.nextInt(10)+1;
+      cardTwo = rand.nextInt(10)+1;
+      cardThree = rand.nextInt(10)+1;
       //cardFour = rand.nextInt(100);
       //cardFive = rand.nextInt(100);
-      equationAnswer = rand.nextInt(100)+1;      
+      equationAnswer = rand.nextInt(10)+1;      
    }
    public void verify()
    {

@@ -302,6 +302,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void doHint()
    {
       System.out.println("This is where hint button function goes.");
+      
    }
    
    public void doDeal()
@@ -331,6 +332,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void doSolve()
    {
       System.out.println("This is where solve button function goes.");
+      
    }
    
    //*****************************************************
@@ -508,7 +510,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    
    public void instructions()
    {
-      JOptionPane.showMessageDialog(null, "Instructions go here. ");
+      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n- Take the three integers and have them equal to the target number.\n-Click on the Deal Button to rest the game. \n-Click on the Hint button to show the first integer of the equation. \n-Click on the Solve Button to solve the equation. \n-Use the dropbox to make the the operatos. \n\n*Note* This game uses inetger division!");
    }   
    
 }//end KryptoGUI
