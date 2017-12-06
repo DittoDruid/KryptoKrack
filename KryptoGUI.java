@@ -677,7 +677,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    
    public void instructions()
    {
-      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n- Take the three integers and have them equal to the target number.\n-Click on the Deal Button to rest the game. \n-Click on the Hint button to show the first integer of the equation. \n-Click on the Solve Button to solve the equation. \n-Use the dropbox to make the the operatos. \n\n*Note* This game uses inetger division!");
+      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n- Take the three integers and have them equal to the target number.\n-Click on the Deal Button to rest the game. \n-Click on the Hint button to show the correct operators of the equation. \n-Click on the Solve Button to solve the equation. \n-Use the dropboxes to make the the operatos. \n\n*Note* This game uses inetger division!");
    }   
    
 }//end KryptoGUI
