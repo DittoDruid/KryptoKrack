@@ -44,11 +44,14 @@ public class KryptoGUI extends JFrame implements ActionListener
    private String operators[] = {"+", "-", "*", "/"};
    private boolean order[] = {false,false,false};
    private String userEquation[]={"null","null","null","null","null"};
+   Krypto game = new Krypto();
+      
   
   
    public KryptoGUI (String title)
    {
-     
+      
+      
       buildGUI();
       setTitle(title);
       setSize(600,400);	
@@ -303,17 +306,45 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void doHint()
    {
       System.out.println("This is where hint button function goes.");
+      String[] compEquation = game.getEquation();
       //game.equation;
-      for(int i=0;i<game.equation.length;i++)
+      if(compEquation[1]=="+")
       {
-          
+          operatorJCB1.setSelectedIndex(0);
+      }
+      else if(compEquation[1]=="-")
+      {
+          operatorJCB1.setSelectedIndex(1);
+      }
+      else if(compEquation[1]=="*")
+      {
+          operatorJCB1.setSelectedIndex(2);
+      }
+      else if(compEquation[1]=="/")
+      {
+          operatorJCB1.setSelectedIndex(3);
+      }
+      if(compEquation[3]=="+")
+      {
+          operatorJCB2.setSelectedIndex(0);
+      }
+      else if(compEquation[3]=="-")
+      {
+          operatorJCB2.setSelectedIndex(1);
+      }
+      else if(compEquation[3]=="*")
+      {
+          operatorJCB2.setSelectedIndex(2);
+      }
+      else if(compEquation[3]=="/")
+      {
+          operatorJCB2.setSelectedIndex(3);
       }
       
    }
    
    public void doDeal()
    {
-      Krypto game = new Krypto();
       game.Krypto();
       cardOne.setText(game.getCardOne());
       cardTwo.setText(game.getCardTwo());
@@ -340,6 +371,12 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void doSolve()
    {
       System.out.println("This is where solve button function goes.");
+      doHint();
+      String[] compEquation = game.getEquation();
+      selectOne.setText(compEquation[0]);
+      selectTwo.setText(compEquation[2]);
+      selectThree.setText(compEquation[4]);
+      updateTotal();
       
    }
    
@@ -463,6 +500,10 @@ public class KryptoGUI extends JFrame implements ActionListener
        }
     }
     total.setText(String.valueOf(aurene));
+    if(Integer.valueOf(total.getText())==Integer.valueOf(targetAmt.getText()))
+    {
+        wonIt();
+    }
     
     
     
@@ -631,6 +672,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void wonIt()
    {
       JOptionPane.showMessageDialog(null, "You won!!!");
+      System.out.println("YOU WON!!!");
    }
    
    public void instructions()
