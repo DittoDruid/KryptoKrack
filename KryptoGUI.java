@@ -303,9 +303,9 @@ public class KryptoGUI extends JFrame implements ActionListener
    
    public void instructions()
    {
-      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n- Take the three numbers and have them equal to the target number.\n-Click on the Deal Button to reset the game. \n-Click on the Hint button to show the correct operators of the equation. \n-Click on the Solve Button to solve the equation. \n-Use the dropboxes to change the operators. \n\n*Note* This game uses inetger division!");
+      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n-Combine three number cards using the four arithmetic \n operations (+, -, *, /) to arrive at a \"target\" number.\n-Deal Button resets the game. \n-Hint button shows the correct operators of the equation. \n-Solve Button solves the equation. \n-Dropboxes make the the operators. \n\n*Note* This game uses integer division!");
    }   
-   
+    
    public void doHint()
    {
       String[] compEquation = game.getEquation();
