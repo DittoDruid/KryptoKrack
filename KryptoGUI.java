@@ -345,7 +345,7 @@ public class KryptoGUI extends JFrame implements ActionListener
 
    }//end doHint
    
-   public void doDeal() //
+   public void doDeal() //deals the player a new hand of card and a new target number
    {
       game.Krypto();
       cardOne.setText(game.getCardOne());
@@ -356,7 +356,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       resetGUI();
    }// end doDeal
         
-   public void doSolve()
+   public void doSolve() //provides the user with a solved equation
    {
       doHint();
       String[] compEquation = game.getEquation();
@@ -366,7 +366,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       updateTotal();    
    }// end doSolve
    
-   public void resetGUI()
+   public void resetGUI() //resets the GUI to starting values
    {
       selectOne.setText("0");
       selectTwo.setText("0");
@@ -379,6 +379,8 @@ public class KryptoGUI extends JFrame implements ActionListener
       cardOne.setEnabled(true);
       cardTwo.setEnabled(true);
       cardThree.setEnabled(true);
+      hintButton.setEnabled(true);
+      solveButton.setEnabled(true);
    }//end resetGUI
 
    public void doCard(ActionEvent e)
@@ -410,7 +412,7 @@ public class KryptoGUI extends JFrame implements ActionListener
          }
    }// end doCard
     
-   public void updateTotal()
+   public void updateTotal() //updates the total for what the player input as their equation
    {
     String answer="";
     double aurene,firstNum,secondNum,thirdNum;
@@ -560,7 +562,7 @@ public class KryptoGUI extends JFrame implements ActionListener
          }
                 
       }
-      else if (e.getSource() == selectTwo)
+      else if (e.getSource() == selectTwo)//checks to see if the clicked box is filled, if it is it clears the box and reenables to appropraite card
       {
          
          if(selectTwo.getText()==cardOne.getText())
@@ -577,13 +579,13 @@ public class KryptoGUI extends JFrame implements ActionListener
          }
          selectTwo.setText("0");
          order[1]=false;
-         if(order[0]==true&&order[1]==true&&order[2]==true)
+         if(order[0]==true&&order[1]==true&&order[2]==true)//the total only updates when all three cards are placed to prevent divide by zero errors
          {
             updateTotal();
          }
          
       }
-      else if (e.getSource() == selectThree)
+      else if (e.getSource() == selectThree)//checks to see if the clicked box is filled, if it is it clears the box and reenables to appropraite card
       {
          
          if(selectThree.getText()==cardOne.getText())
@@ -600,7 +602,7 @@ public class KryptoGUI extends JFrame implements ActionListener
          }
          selectThree.setText("0");
          order[2]=false;
-         if(order[0]==true&&order[1]==true&&order[2]==true)
+         if(order[0]==true&&order[1]==true&&order[2]==true)//the total only updates when all three cards are placed to prevent divide by zero errors
          {
             updateTotal();
          }
@@ -624,5 +626,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void wonIt() //Displays the You Won Textbox to signify that the game was won
    {
       JOptionPane.showMessageDialog(null, "You won!!!");
+      hintButton.setEnabled(false);
+      solveButton.setEnabled(false);
    }  
 }//end KryptoGUI
