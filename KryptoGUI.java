@@ -418,11 +418,11 @@ public class KryptoGUI extends JFrame implements ActionListener
    public void updateTotal() //Need to add error handling if they try to divide by zero
    {
     String answer="";
-    int aurene,firstNum,secondNum,thirdNum;
+    double aurene,firstNum,secondNum,thirdNum;
     aurene=0;
-    firstNum=Integer.parseInt(selectOne.getText());
-    secondNum=Integer.parseInt(selectTwo.getText());
-    thirdNum=Integer.parseInt(selectThree.getText());
+    firstNum=Double.parseDouble(selectOne.getText());
+    secondNum=Double.parseDouble(selectTwo.getText());
+    thirdNum=Double.parseDouble(selectThree.getText());
     answer=selectOne.getText()+operatorJCB1.getSelectedItem()+selectTwo.getText()+operatorJCB2.getSelectedItem()+selectThree.getText();
     System.out.println(answer);
     if(operatorJCB1.getSelectedItem()=="+")
@@ -502,7 +502,7 @@ public class KryptoGUI extends JFrame implements ActionListener
        }
     }
     total.setText(String.valueOf(aurene));
-    if(Integer.valueOf(total.getText())==Integer.valueOf(targetAmt.getText()))
+    if(Double.valueOf(total.getText())==Double.valueOf(targetAmt.getText()))
     {
         wonIt();
     }

@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Krypto {
 
-   private int cardOne,cardTwo,cardThree, cardFour, cardFive,equationAnswer;
+   private double cardOne,cardTwo,cardThree, cardFour, cardFive,equationAnswer;
    private String c1, c2, c3, c4, c5, eA;
    public boolean valid;
    public String equation[]={"null","null","null","null","null"};
@@ -24,7 +24,7 @@ public class Krypto {
          generateNumber();
          verify();
       }
-      System.out.println(equation);
+      
    }
    public void generateNumber()
    {
