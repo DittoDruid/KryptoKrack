@@ -357,9 +357,9 @@ public class KryptoGUI extends JFrame implements ActionListener
    }
    public void resetGUI()
    {
-      selectOne.setText("-1");
-      selectTwo.setText("-1");
-      selectThree.setText("-1");
+      selectOne.setText("0");
+      selectTwo.setText("0");
+      selectThree.setText("0");
       order[0]=false;
       order[1]=false;
       order[2]=false;
@@ -407,8 +407,10 @@ public class KryptoGUI extends JFrame implements ActionListener
          ((JButton)e.getSource()).setEnabled(false);
          order[2]=true;
       }
-      
-      updateTotal();
+      if(order[0]==true&&order[1]==true&&order[2]==true)
+         {
+            updateTotal();
+         }
       
    }
    
@@ -584,9 +586,14 @@ public class KryptoGUI extends JFrame implements ActionListener
          {
              cardThree.setEnabled(true);
          }
-         selectOne.setText("-1");
+         selectOne.setText("0");
+         
          order[0]=false;
-         updateTotal();
+         if(order[0]==true&&order[1]==true&&order[2]==true)
+         {
+            updateTotal();
+         }
+         
          
       }
       else if (e.getSource() == selectTwo)
@@ -604,9 +611,13 @@ public class KryptoGUI extends JFrame implements ActionListener
          {
              cardThree.setEnabled(true);
          }
-         selectTwo.setText("-1");
+         selectTwo.setText("0");
          order[1]=false;
-         updateTotal();
+         if(order[0]==true&&order[1]==true&&order[2]==true)
+         {
+            updateTotal();
+         }
+         
       }
       else if (e.getSource() == selectThree)
       {
@@ -623,9 +634,12 @@ public class KryptoGUI extends JFrame implements ActionListener
          {
              cardThree.setEnabled(true);
          }
-         selectThree.setText("-1");
+         selectThree.setText("0");
          order[2]=false;
-         updateTotal();
+         if(order[0]==true&&order[1]==true&&order[2]==true)
+         {
+            updateTotal();
+         }
       }
       else if (e.getSource() == selectFour)
       {
@@ -638,12 +652,19 @@ public class KryptoGUI extends JFrame implements ActionListener
       else if (e.getSource() == operatorJCB1)
       {
          doSelectOperator1();
-         updateTotal();
+         if(order[0]==true&&order[1]==true&&order[2]==true)
+         {
+            updateTotal();
+         }
       }     
       else if (e.getSource() == operatorJCB2)
       {
          doSelectOperator2();
-         updateTotal();
+         if(order[0]==true&&order[1]==true&&order[2]==true)
+         {
+            updateTotal();
+         }
+         
       }     
       else if (e.getSource() == operatorJCB3)
       {
@@ -677,7 +698,7 @@ public class KryptoGUI extends JFrame implements ActionListener
    
    public void instructions()
    {
-      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n- Take the three integers and have them equal to the target number.\n-Click on the Deal Button to rest the game. \n-Click on the Hint button to show the correct operators of the equation. \n-Click on the Solve Button to solve the equation. \n-Use the dropboxes to make the the operatos. \n\n*Note* This game uses inetger division!");
+      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n- Take the three integers and have them equal to the target number.\n-Click on the Deal Button to reset the game. \n-Click on the Hint button to show the correct operators of the equation. \n-Click on the Solve Button to solve the equation. \n-Use the dropboxes to make the the operators. \n\n*Note* This game uses inetger division!");
    }   
    
 }//end KryptoGUI
