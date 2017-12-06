@@ -62,7 +62,7 @@ public class Krypto {
          System.out.println(cardOne+"-"+cardTwo+"-"+cardThree+"="+equationAnswer);
          equation= new String[] {String.valueOf(cardOne),"-",String.valueOf(cardTwo),"-",String.valueOf(cardThree)};
       }
-      else if(cardOne+cardTwo*cardThree==equationAnswer)
+      else if((cardOne+cardTwo)*cardThree==equationAnswer)
       {
          valid=true;   
          System.out.println(cardOne+"+"+cardTwo+"*"+cardThree+"="+equationAnswer);
@@ -81,7 +81,7 @@ public class Krypto {
          equation= new String[] {String.valueOf(cardOne),"*",String.valueOf(cardTwo),"*",String.valueOf(cardThree)};
       }
       
-      else if(cardOne-cardTwo*cardThree==equationAnswer)
+      else if((cardOne-cardTwo)*cardThree==equationAnswer)
       {
          valid=true;
          System.out.println(cardOne+"-"+cardTwo+"*"+cardThree+"="+equationAnswer);
@@ -105,14 +105,14 @@ public class Krypto {
          System.out.println(cardOne+"/"+cardTwo+"+"+cardThree+"="+equationAnswer);
          equation= new String[] {String.valueOf(cardOne),"/",String.valueOf(cardTwo),"+",String.valueOf(cardThree)};
       }
-      else if(cardOne+cardTwo/cardThree==equationAnswer)
+      else if((cardOne+cardTwo)/cardThree==equationAnswer)
       {
          valid=true;
          System.out.println(cardOne+"+"+cardTwo+"/"+cardThree+"="+equationAnswer);
          equation= new String[] {String.valueOf(cardOne),"+",String.valueOf(cardTwo),"/",String.valueOf(cardThree)};
       }
       
-      else if(cardOne-cardTwo/cardThree==equationAnswer)
+      else if((cardOne-cardTwo)/cardThree==equationAnswer)
       {
          valid=true;
          System.out.println(cardOne+"-"+cardTwo+"/"+cardThree+"="+equationAnswer);

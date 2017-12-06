@@ -435,11 +435,11 @@ public class KryptoGUI extends JFrame implements ActionListener
        }
        else if(operatorJCB2.getSelectedItem()=="*")
        {
-           aurene=firstNum+secondNum*thirdNum;
+           aurene=(firstNum+secondNum)*thirdNum;
        }
        else if(operatorJCB2.getSelectedItem()=="/")
        {
-           aurene=firstNum+secondNum/thirdNum;
+           aurene=(firstNum+secondNum)/thirdNum;
        }
     }
     else if(operatorJCB1.getSelectedItem()=="-")
@@ -454,11 +454,11 @@ public class KryptoGUI extends JFrame implements ActionListener
        }
        else if(operatorJCB2.getSelectedItem()=="*")
        {
-           aurene=firstNum-secondNum*thirdNum;
+           aurene=(firstNum-secondNum)*thirdNum;
        }
        else if(operatorJCB2.getSelectedItem()=="/")
        {
-           aurene=firstNum-secondNum/thirdNum;
+           aurene=(firstNum-secondNum)/thirdNum;
        }
     }
     else if(operatorJCB1.getSelectedItem()=="*")
