@@ -122,7 +122,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       namePanel.setLayout(new FlowLayout());
       namePanel.setBackground(new Color(0,0,255));
       kryptoKrack = new JLabel(kryptoIcon);
-      kryptoKrack = new JLabel(new ImageIcon(KryptoGUI.class.getResource("krackingkrypto.png")));
+      //kryptoKrack = new JLabel(new ImageIcon(KryptoGUI.class.getResource("krackingkrypto.png"))); //This line works when uncommented it just does not function when the jar file is built as the image files are not packaged into the jar with it
       namePanel.add(kryptoKrack);
       titlePanel.add("West", namePanel);
                  
@@ -209,7 +209,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       target.setForeground(Color.white);
       target.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
       targetAmt = new JTextField("");
-      //targetAmt.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+      //targetAmt.setBorder(javax.swing.BorderFactory.createEmptyBorder()); //This line works when uncommented it just does not function when the jar file is built as the image files are not packaged into the jar with it
       targetAmt.setEditable(false);
       targetAmt.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
       targetAmt.setBackground(Color.orange);
@@ -295,7 +295,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       Box.createRigidArea(new Dimension(150,150));
       
       hammerLabel = new JLabel(hammerIcon);
-      hammerLabel = new JLabel(new ImageIcon(KryptoGUI.class.getResource("mchammer.gif")));
+      //hammerLabel = new JLabel(new ImageIcon(KryptoGUI.class.getResource("mchammer.gif")));
       gamePanel.add("South", hammerLabel);
       
       backgroundPanel.add("South", gamePanel);   
