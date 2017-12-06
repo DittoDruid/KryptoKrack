@@ -122,7 +122,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       namePanel.setLayout(new FlowLayout());
       namePanel.setBackground(new Color(0,0,255));
       kryptoKrack = new JLabel(kryptoIcon);
-      kryptoKrack = new JLabel(new ImageIcon("images/krackingkrypto.png"));
+      kryptoKrack = new JLabel(new ImageIcon(KryptoGUI.class.getResource("krackingkrypto.png")));
       namePanel.add(kryptoKrack);
       titlePanel.add("West", namePanel);
                  
@@ -295,18 +295,18 @@ public class KryptoGUI extends JFrame implements ActionListener
       Box.createRigidArea(new Dimension(150,150));
       
       hammerLabel = new JLabel(hammerIcon);
-      hammerLabel = new JLabel(new ImageIcon("images/mchammer.gif"));
+      hammerLabel = new JLabel(new ImageIcon(KryptoGUI.class.getResource("mchammer.gif")));
       gamePanel.add("South", hammerLabel);
       
       backgroundPanel.add("South", gamePanel);   
    }//end buildGamePanel
    
-   public void instructions()
+   public void instructions() //displays instructions for the user
    {
-      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n-Combine three number cards using the four arithmetic \n operations (+, -, *, /) to arrive at a \"target\" number.\n-Deal Button resets the game. \n-Hint button shows the correct operators of the equation. \n-Solve Button solves the equation. \n-Dropboxes make the the operators. \n\n*Note* This game uses integer division!");
+      JOptionPane.showMessageDialog(null, "Instructions of the game.\n\n-Combine three number cards using the four arithmetic \n operations (+, -, *, /) to arrive at a \"target\" number.\n-Deal Button resets the game. \n-Hint button shows the correct operators of the equation. \n-Solve Button solves the equation. \n-Dropboxes make the operators. \n\n*Note* This game uses integer division!");
    }   
     
-   public void doHint()
+   public void doHint() //sets the operators to give a hint to th user on what the equation should look like
    {
       String[] compEquation = game.getEquation();
 
@@ -345,7 +345,7 @@ public class KryptoGUI extends JFrame implements ActionListener
 
    }//end doHint
    
-   public void doDeal()
+   public void doDeal() //
    {
       game.Krypto();
       cardOne.setText(game.getCardOne());
@@ -360,9 +360,9 @@ public class KryptoGUI extends JFrame implements ActionListener
    {
       doHint();
       String[] compEquation = game.getEquation();
-      selectOne.setText(compEquation[0]);
-      selectTwo.setText(compEquation[2]);
-      selectThree.setText(compEquation[4]);
+      selectOne.setText(String.valueOf(df.format(Double.parseDouble(compEquation[0]))));
+      selectTwo.setText(String.valueOf(df.format(Double.parseDouble(compEquation[2]))));
+      selectThree.setText(String.valueOf(df.format(Double.parseDouble(compEquation[4]))));
       updateTotal();    
    }// end doSolve
    
@@ -536,7 +536,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       {
          doCard(e);
       }   
-      else if (e.getSource() == selectOne)
+      else if (e.getSource() == selectOne) //checks to see if the clicked box is filled, if it is it clears the box and reenables to appropraite card
       {
           
          if(selectOne.getText() == cardOne.getText())
@@ -554,7 +554,7 @@ public class KryptoGUI extends JFrame implements ActionListener
          selectOne.setText("0");
          
          order[0]=false;
-         if(order[0]==true&&order[1] == true&&order[2]==true)
+         if(order[0]==true&&order[1] == true&&order[2]==true) //the total only updates when all three cards are placed to prevent divide by zero errors
          {
             updateTotal();
          }
@@ -621,7 +621,7 @@ public class KryptoGUI extends JFrame implements ActionListener
       }   
    }//end ActionPerformed
    
-   public void wonIt()
+   public void wonIt() //Displays the You Won Textbox to signify that the game was won
    {
       JOptionPane.showMessageDialog(null, "You won!!!");
    }  

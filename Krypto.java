@@ -48,8 +48,8 @@ public class Krypto {
 
    private double cardOne,cardTwo,cardThree, equationAnswer;
    private String c1, c2, c3, eA; 
-   public boolean valid;
-   public String equation[]={"null","null","null","null","null"};
+   private boolean valid;
+   private String equation[]={"null","null","null","null","null"};
    public DecimalFormat df = new DecimalFormat("#");
            
    public void Krypto()
